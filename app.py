@@ -19,8 +19,23 @@ class MainWindow(QtWidgets.QMainWindow):
         for widget in self.list_widgets:
             widget.setIconSize(QtCore.QSize(40,40))
             widget.itemSelectionChanged.connect(self.change_selection)
-
-      
+            # widget.model().rowsInserted.connect(self.update_color_background)
+            
+            
+    # def update_color_background(self, parent, start, end):
+    #     sender_widget = self.sender().parent()
+    #     name_widget = sender_widget.objectName()
+    #     # print(name_widget, start)
+        
+    #     color_map = {
+    #         "list_todo": "#dae674",  
+    #         "list_doing": "#75cbdf",  
+    #         "list_done": "#66cb9e"  }
+        
+    #     item = sender_widget.item(start)
+    #     QtCore.QTimer.singleShot(0, lambda: item.setBackground(QtGui.QColor(color_map[name_widget])))
+            
+        
     def change_selection(self):
         fokus_widget = None
         for widget in self.list_widgets:

@@ -63,15 +63,27 @@
         <property name="text">
          <string>Low</string>
         </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/low.png</normaloff>Icons/low.png</iconset>
+        </property>
        </item>
        <item>
         <property name="text">
          <string>Medium</string>
         </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/medium.png</normaloff>Icons/medium.png</iconset>
+        </property>
        </item>
        <item>
         <property name="text">
          <string>High</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>Icons/high.png</normaloff>Icons/high.png</iconset>
         </property>
        </item>
       </widget>
@@ -218,6 +230,9 @@
        </property>
        <property name="defaultDropAction">
         <enum>Qt::MoveAction</enum>
+       </property>
+       <property name="currentRow">
+        <number>-1</number>
        </property>
       </widget>
      </item>
