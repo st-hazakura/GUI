@@ -1,20 +1,25 @@
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets, uic, QtGui, QtCore
 from PyQt5.QtGui import QPixmap
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("todo_app.ui", self) 
-        self.list_widgets = [self.list_todo, self.list_doing, self.list_done] 
 
         with open("style.css", "r") as file:
             self.setStyleSheet(file.read())  
-
+        
+        self.setWindowIcon(QtGui.QIcon("Icons\\logo.png")) 
+        self.dropdown_priority.setIconSize(QtCore.QSize(40,20))
+        
         self.button_addtask.clicked.connect(self.add_task)
         self.button_deletetask.clicked.connect(self.delete_task)
         
+        self.list_widgets = [self.list_todo, self.list_doing, self.list_done]  
         for widget in self.list_widgets:
+            widget.setIconSize(QtCore.QSize(40,40))
             widget.itemSelectionChanged.connect(self.change_selection)
+
       
     def change_selection(self):
         fokus_widget = None
@@ -28,12 +33,18 @@ class MainWindow(QtWidgets.QMainWindow):
     
             
     def add_task(self):
-        line_taskinput = self.line_taskinput.text().strip()
+        text_taskinput = self.line_taskinput.text().strip()
+        idx_item_dropdown = self.dropdown_priority.currentIndex()
+        priority_icons_path = ['Icons\\low.png', 'Icons\\medium.png', 'Icons\\high.png']
         
-        if line_taskinput == '':
+        if text_taskinput == '':
             self.input_error("Error","Please write task")
         else: 
-            self.list_todo.addItem(line_taskinput)
+            item = QtWidgets.QListWidgetItem(text_taskinput)
+            icon = QtGui.QIcon(priority_icons_path[idx_item_dropdown])
+            item.setIcon(icon)
+            self.list_todo.addItem(item)
+        
             self.line_taskinput.clear()
     
 
@@ -52,7 +63,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def delete_task(self):
-        isselect_item = False
         for widget in self.list_widgets:
             if widget.selectedItems():
                 answer = self.confirm_delete("Confirm Delete", "Are you sure?")
@@ -60,11 +70,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 if answer == QtWidgets.QMessageBox.Yes:
                     row = widget.currentRow()
                     widget.takeItem(row)
-                    isselect_item = True
                     break
-        
-        if not isselect_item:
-            self.input_error("Error", "Please select task")
                 
     
     def confirm_delete(self, title, text):
