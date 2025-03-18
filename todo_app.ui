@@ -194,13 +194,29 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_todo">
+     <item row="0" column="2">
+      <widget class="QLabel" name="label_done">
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
        <property name="text">
-        <string>To do</string>
+        <string>Done</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QListWidget" name="list_done">
+       <property name="dragDropMode">
+        <enum>QAbstractItemView::DragDrop</enum>
+       </property>
+       <property name="defaultDropAction">
+        <enum>Qt::MoveAction</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -221,6 +237,9 @@
        <property name="currentRow">
         <number>-1</number>
        </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item row="1" column="1">
@@ -234,25 +253,15 @@
        <property name="currentRow">
         <number>-1</number>
        </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QListWidget" name="list_done">
-       <property name="dragDropMode">
-        <enum>QAbstractItemView::DragDrop</enum>
-       </property>
-       <property name="defaultDropAction">
-        <enum>Qt::MoveAction</enum>
+       <property name="sortingEnabled">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item row="0" column="2">
-      <widget class="QLabel" name="label_done">
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_todo">
        <property name="text">
-        <string>Done</string>
+        <string>To do</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
