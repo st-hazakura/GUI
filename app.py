@@ -52,16 +52,45 @@ class MainWindow(QtWidgets.QMainWindow):
         idx_item_dropdown = self.dropdown_priority.currentIndex()
         priority_icons_path = ['Icons\\low.png', 'Icons\\medium.png', 'Icons\\high.png']
         
+        idx_drop_box_date = self.dropdown_doto.currentIndex()
+        
         if text_taskinput == '':
             self.input_error("Error","Please write task")
+        
         else: 
             item = QtWidgets.QListWidgetItem(text_taskinput)
             icon = QtGui.QIcon(priority_icons_path[idx_item_dropdown])
             item.setIcon(icon)
             self.list_todo.addItem(item)
-        
-            self.line_taskinput.clear()
+                
+            if idx_drop_box_date == 1:
+                self.select_date(item)
+            
+            self.line_taskinput.clear()                
+                
     
+    def select_date(self, item):
+        dialog_window = QtWidgets.QDialog(self)
+        layout = QtWidgets.QVBoxLayout()
+        
+        calendar = QtWidgets.QCalendarWidget()
+        layout.addWidget(calendar)
+        
+        buttons = QtWidgets.QDialogButtonBox(QtWidgets.QDialogButtonBox.Ok | QtWidgets.QDialogButtonBox.Cancel)
+        layout.addWidget(buttons)
+
+        dialog_window.setLayout(layout)
+                
+        def add_date(calendar, dialog_window, item):
+            selected_date = calendar.selectedDate().toString("yyyy-MM-dd")
+            item.setText(f"{selected_date}  {item.text()}")
+            dialog_window.accept()
+        
+        buttons.accepted.connect(lambda: add_date(calendar, dialog_window, item))
+        buttons.rejected.connect(dialog_window.reject)
+        
+        dialog_window.exec_()
+
 
     def input_error(self, title, text):
         window_error = QtWidgets.QMessageBox(self)
