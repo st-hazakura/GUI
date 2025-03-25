@@ -1,4 +1,4 @@
-# $$1\ Download\ QTDesigner $$
+# $$1\ Download\ QTDesigner$$
 
 [Link to website](https://build-system.fman.io/qt-designer-download)
 
@@ -8,7 +8,7 @@ Open QTDesigner:
 
 ---
 
-# $$ 2\ Overview of \ QTDesigner $$
+# $$2\ Overview of \ QTDesigner$$
 
 In QTDesigner, we create the skeleton of our application.
 
@@ -32,7 +32,7 @@ Basic elements, we are going to use:
 
 ---
 
-# $$ 3 \ VSCode, \ settings \ of \ environment. $$
+# $$3 \ VSCode, \ settings \ of \ environment.$$
 
 `Terminal`:
 
@@ -109,7 +109,7 @@ Let's define constructor:
 
 ---
 
-# $$ 4\ Back\ into\ QTDesigneru $$
+# $$4\ Back\ into\ QTDesigneru$$
 
 Widgets are now attributes of $MainWindow$ and we can access to them. How?
 
@@ -163,7 +163,7 @@ There are lots of properties we can set in QTDesigner or in the code. We will tr
 
 ---
 
-# $$ 5\ Start of\ coding $$
+# $$5\ Start of\ coding$$
 
 **Terminology:**
 
@@ -236,7 +236,7 @@ We can connect signal to several slots - all of them will be executed after the 
 
 ---
 
-# $$ 6\ Dynamic\ window\ –\ method\ input\_error $$
+# $$6\ Dynamic\ window\ –\ method\ input\_error$$
 
 `!` It is not possible to create dynamic elements in QTDesigner, so we are going to add it in code, using $QMessageBox$ from $QtWidgets$.
 
@@ -278,7 +278,7 @@ $exec\_()$ – executes the dynamic window above the main one. Until we close it
 It's important to use $exec\_()$ instead of $exec()$, because $exec()$ is a Python's function. For QT we use $exec\_()$.
 ------------------------------------------------------------------------------------
 
-# $$ 7\ Drag\ and\ Drop $$
+# $$7\ Drag\ and\ Drop$$
 
 There are to ways, how add drag and drop functionality between $QListWidgety$:
 
@@ -294,7 +294,7 @@ There exist multiple parameters, which we can set, but this is good for now.
 
 ---
 
-# $$ 8\ Visual\ part $$
+# $$8\ Visual\ part$$
 
 We can use method $setStyleSheet()$ of class $QMainWindow$ to directly set visuals of widgets. But it's better to save them into external file and then upload them.
 
@@ -374,7 +374,7 @@ So let's go into QTDesigner: Choose $QGridLayout$, go to $Property Editor$ and s
 
 ---
 
-# $$ 9\ Coding\ 2 $$
+# $$9\ Coding\ 2$$
 
 
 **We notice an error**, that occurs. When selecting an item in each of the widgets with our tasks (list_todo, list_doing, list_done), the items change to a different color.
@@ -543,7 +543,7 @@ from PyQt5 import QtGui
 
 ---
 
-# $$ 10\ ComboBox $$
+# $$10\ ComboBox$$
 
 We would also like to assign an icon based on the task's importance. We have already predefined the items in QT Designer. We can set their icons either in QT Designer:
 
@@ -604,7 +604,7 @@ We also don't like that the icons are small – we will increase their size in t
 
 ---
 
-# $$ 11\ Visual\ part\ 2 $$
+# $$11\ Visual\ part\ 2$$
 
 
 We would like to style the items in the $QListWidget$. QTDesigner doesn't allow us to do this, so we can use the first method – setting styles with CSS.
@@ -712,7 +712,7 @@ We get its parent, which is the widget into which the item was added:  `self.sen
 
 ---
 
-# $$ 12\ ComboBox\ 2\ -\ date $$
+# $$12\ ComboBox\ 2\ -\ date$$
 
 `QMessageBox` is intended only for icons, text, and buttons – it does not support widgets like a calendar, for example.
 
